@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+        <meta charset="utf-8" />
+        <title>Rafael Garcia</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Rafael Garcia </a></h1>
+                <nav><ul>
+                    <li><a href="/category/django.html">Django</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/django-and-better-exceptions.html">Django + Better Exceptions</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-03-17T10:00:00-03:00">
+                Published: sáb 17 março 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-03-17T10:00:00-03:00">
+                Updated: sáb 17 março 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/rafael-garcia.html">Rafael Garcia</a>
+        </address>
+<p>In <a href="/category/django.html">Django</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/django.html">django</a> <a href="/tag/middlewares.html">middlewares</a> <a href="/tag/exceptions.html">exceptions</a> </p>
+</footer><!-- /.post-info --><p>Essa integração foi desenvolvida com o <a href="https://www.djangoproject.com/">Django 2.0</a>.
+E com o modulo <a href="https://github.com/Qix-/better-exceptions">better exceptions</a></p>
+<ul>
+<li>Instale o better exceptions</li>
+<li>Adicione esse arquivo e configuração ao seu projeto Django.</li>
+</ul>
+<p>Arquivo: myproject/middlewares.py</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">better_exceptions</span> <span class="kn">import</span> <span class="n">format_exception</span>
+<span class="kn">from</span> <span class="nn">django.utils.deprecation</span> <span class="kn">import</span> <span class="n">MiddlewareMixin</span>
+
+
+<span class="k">class</span> <span class="nc">BetterExceptionMiddleware</span><span class="p">(</span><span class="n">MiddlewareMixin</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">process_exception</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">format_exception</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()))</span>
+</pre></div>
+
+
+<p>Edite o arquivo settings de desenvolvimento do seu projeto Django</p>
+<div class="highlight"><pre><span></span><span class="c1"># Additional middleware</span>
+<span class="n">MIDDLEWARE</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="s1">&#39;myproject.middlewares.BetterExceptionMiddleware&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;debug_toolbar.middleware.DebugToolbarMiddleware&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>É isso.  Só se divertir debugando suas exceptions com mais informações.</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://www.linkedin.com/in/rafaelang/">LinkedIn</a></li>
+                            <li><a href="https://github.com/rafaelang">Github</a></li>
+                            <li><a href="https://gist.github.com/rafaelang">Gist</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
