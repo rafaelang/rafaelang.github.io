@@ -15,12 +15,54 @@
                 <h1><a href="/">Rafael Garcia </a></h1>
                 <nav><ul>
                     <li><a href="/category/django.html">Django</a></li>
+                    <li><a href="/category/drupal.html">Drupal</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/django-and-better-exceptions.html">Django + Better Exceptions</a></h1>
+                    <h1 class="entry-title"><a href="/drupal-8-views-query-expressions.html">Drupal 8 - Views e Query Expressions</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-03-18T10:00:00-03:00">
+                Published: dom 18 março 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-03-18T10:00:00-03:00">
+                Updated: dom 18 março 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/rafael-garcia.html">Rafael Garcia</a>
+        </address>
+<p>In <a href="/category/drupal.html">Drupal</a>.</p>
+<p>tags: <a href="/tag/php.html">php</a> <a href="/tag/drupal.html">drupal</a> <a href="/tag/views.html">views</a> <a href="/tag/tips.html">tips</a> </p>
+</footer><!-- /.post-info --><h1>No <a href="https://api.drupal.org/api/drupal/core%21modules%21views%21src%21Plugin%21views%21query%21Sql.php/function/Sql%3A%3AaddOrderBy/8.5.x">order by</a></h1>
+<p>Arquivo: myproject/modules/custom/mymodule.views.inc</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Drupal\views\Plugin\views\query\QueryPluginBase</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Drupal\views\ViewExecutable</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="nf">mymodule_views_query_alter</span><span class="p">(</span><span class="nx">ViewExecutable</span> <span class="nv">$view</span><span class="p">,</span> <span class="nx">QueryPluginBase</span> <span class="nv">$query</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$view</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;mymodule_view&#39;</span> <span class="o">&amp;&amp;</span> <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">current_display</span> <span class="o">==</span> <span class="s1">&#39;block_1&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">addOrderBy</span><span class="p">(</span><span class="k">Null</span><span class="p">,</span> <span class="s2">&quot;myfield=1&quot;</span><span class="p">,</span> <span class="s1">&#39;DESC&#39;</span><span class="p">,</span> <span class="s1">&#39;expression_alias&#39;</span><span class="p">);</span>
+        <span class="nb">array_unshift</span><span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">orderby</span><span class="p">,</span> <span class="nb">array_pop</span><span class="p">(</span><span class="nv">$query</span><span class="o">-&gt;</span><span class="na">orderby</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/django-and-better-exceptions.html" rel="bookmark"
+                           title="Permalink to Django + Better Exceptions">Django + Better Exceptions</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-17T10:00:00-03:00">
                 Published: sáb 17 março 2018
@@ -35,34 +77,12 @@
         </address>
 <p>In <a href="/category/django.html">Django</a>.</p>
 <p>tags: <a href="/tag/python.html">python</a> <a href="/tag/django.html">django</a> <a href="/tag/middlewares.html">middlewares</a> <a href="/tag/exceptions.html">exceptions</a> <a href="/tag/tips.html">tips</a> </p>
-</footer><!-- /.post-info --><p>Essa integração foi desenvolvida com o <a href="https://www.djangoproject.com/">Django 2.0</a>.
-E com o modulo <a href="https://github.com/Qix-/better-exceptions">better exceptions</a></p>
-<ul>
-<li>Instale o better exceptions</li>
-<li>Adicione esse arquivo e configuração ao seu projeto Django.</li>
-</ul>
-<p>Arquivo: myproject/middlewares.py</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">better_exceptions</span> <span class="kn">import</span> <span class="n">format_exception</span>
-<span class="kn">from</span> <span class="nn">django.utils.deprecation</span> <span class="kn">import</span> <span class="n">MiddlewareMixin</span>
-
-
-<span class="k">class</span> <span class="nc">BetterExceptionMiddleware</span><span class="p">(</span><span class="n">MiddlewareMixin</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">process_exception</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">format_exception</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()))</span>
-</pre></div>
-
-
-<p>Edite o arquivo settings de desenvolvimento do seu projeto Django</p>
-<div class="highlight"><pre><span></span><span class="c1"># Additional middleware</span>
-<span class="n">MIDDLEWARE</span> <span class="o">+=</span> <span class="p">[</span>
-    <span class="s1">&#39;myproject.middlewares.BetterExceptionMiddleware&#39;</span><span class="p">,</span>
-    <span class="p">]</span>
-</pre></div>
-
-
-<p>É isso.  Só se divertir debugando suas exceptions com mais informações.</p>                </article>
-            </aside><!-- /#featured -->
+</footer><!-- /.post-info -->                <p>Como integrar Django e Better Exceptions</p>
+                <a class="readmore" href="/django-and-better-exceptions.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
