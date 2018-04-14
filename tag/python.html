@@ -16,12 +16,82 @@
                 <nav><ul>
                     <li><a href="/category/django.html">Django</a></li>
                     <li><a href="/category/drupal.html">Drupal</a></li>
+                    <li><a href="/category/python.html">Python</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/django-and-better-exceptions.html">Django + Better Exceptions</a></h1>
+                    <h1 class="entry-title"><a href="/validar-html-com-python.html">Validar HTML com python</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-04-11T10:00:00-03:00">
+                Published: qua 11 abril 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-04-11T10:00:00-03:00">
+                Updated: qua 11 abril 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/rafael-garcia.html">Rafael Garcia</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/bs4.html">bs4</a> <a href="/tag/beaultifulsoap.html">beaultifulsoap</a> <a href="/tag/xml.html">xml</a> <a href="/tag/html.html">html</a> <a href="/tag/tips.html">tips</a> </p>
+</footer><!-- /.post-info --><ul>
+<li>Validar HTML com a biblioteca padrão do python</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">xml.etree</span> <span class="kn">import</span> <span class="n">ElementTree</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s1">&#39;&lt;br/&gt;&#39;</span><span class="p">)</span> <span class="c1">#Ok</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt;Teste &amp; teste&lt;/p&gt;&#39;</span><span class="p">)</span> <span class="c1">#xml.etree.ElementTree.ParseError: not well-formed (invalid token): line 1, column 10</span>
+</pre></div>
+
+
+<ul>
+<li>Corrigindo rapidamente com BeautifulSoap</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoap</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt; teste &amp; teste&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;lxml&#39;</span><span class="p">)))</span> <span class="c1">#Ok</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt; teste teste&lt;/p&gt;&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">Element</span> <span class="s1">&#39;p&#39;</span> <span class="n">at</span> <span class="mh">0x7f7f9c586ae8</span><span class="o">&gt;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt; teste teste&lt;p&gt;&#39;</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+
+  <span class="n">File</span> <span class="s2">&quot;IPython/core/interactiveshell.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2910</span><span class="p">,</span> <span class="ow">in</span> <span class="n">run_code</span>
+    <span class="k">exec</span><span class="p">(</span><span class="n">code_obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_global_ns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_ns</span><span class="p">)</span>
+
+  <span class="n">File</span> <span class="s2">&quot;&lt;ipython-input-6-889472af0207&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">ElementTree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt; teste teste&lt;p&gt;&#39;</span><span class="p">)</span>
+
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib/python3.6/xml/etree/ElementTree.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1315</span><span class="p">,</span> <span class="ow">in</span> <span class="n">XML</span>
+    <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+  <span class="n">File</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="n">unknown</span>
+<span class="n">ParseError</span><span class="p">:</span> <span class="n">no</span> <span class="n">element</span> <span class="n">found</span><span class="p">:</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="n">column</span> <span class="mi">18</span>
+
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">ElementTree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt; teste teste&lt;p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;lxml&#39;</span><span class="p">)))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">Element</span> <span class="s1">&#39;html&#39;</span> <span class="n">at</span> <span class="mh">0x7f7f96d09b38</span><span class="o">&gt;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="nb">str</span><span class="p">(</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="s1">&#39;&lt;p&gt; teste teste&lt;p&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;lxml&#39;</span><span class="p">))</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;p&gt; teste teste&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/django-and-better-exceptions.html" rel="bookmark"
+                           title="Permalink to Django + Better Exceptions">Django + Better Exceptions</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-03-17T10:00:00-03:00">
                 Published: sáb 17 março 2018
@@ -36,34 +106,12 @@
         </address>
 <p>In <a href="/category/django.html">Django</a>.</p>
 <p>tags: <a href="/tag/python.html">python</a> <a href="/tag/django.html">django</a> <a href="/tag/middlewares.html">middlewares</a> <a href="/tag/exceptions.html">exceptions</a> <a href="/tag/tips.html">tips</a> </p>
-</footer><!-- /.post-info --><p>Essa integração foi desenvolvida com o <a href="https://www.djangoproject.com/">Django 2.0</a>.
-E com o modulo <a href="https://github.com/Qix-/better-exceptions">better exceptions</a></p>
-<ul>
-<li>Instale o better exceptions</li>
-<li>Adicione esse arquivo e configuração ao seu projeto Django.</li>
-</ul>
-<p>Arquivo: myproject/middlewares.py</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">better_exceptions</span> <span class="kn">import</span> <span class="n">format_exception</span>
-<span class="kn">from</span> <span class="nn">django.utils.deprecation</span> <span class="kn">import</span> <span class="n">MiddlewareMixin</span>
-
-
-<span class="k">class</span> <span class="nc">BetterExceptionMiddleware</span><span class="p">(</span><span class="n">MiddlewareMixin</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">process_exception</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">format_exception</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()))</span>
-</pre></div>
-
-
-<p>Edite o arquivo settings de desenvolvimento do seu projeto Django</p>
-<div class="highlight"><pre><span></span><span class="c1"># Additional middleware</span>
-<span class="n">MIDDLEWARE</span> <span class="o">+=</span> <span class="p">[</span>
-    <span class="s1">&#39;myproject.middlewares.BetterExceptionMiddleware&#39;</span><span class="p">,</span>
-    <span class="p">]</span>
-</pre></div>
-
-
-<p>É isso.  Só se divertir debugando suas exceptions com mais informações.</p>                </article>
-            </aside><!-- /#featured -->
+</footer><!-- /.post-info -->                <p>Como integrar Django e Better Exceptions</p>
+                <a class="readmore" href="/django-and-better-exceptions.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
