@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
         <meta charset="utf-8" />
-        <title>Rafael Garcia - Python</title>
+        <title>Inline CPF Generator</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
@@ -20,10 +20,15 @@
                     <li class="active"><a href="/category/python.html">Python</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/inline-cpf-generator.html" rel="bookmark"
+           title="Permalink to Inline CPF Generator">Inline CPF Generator</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/inline-cpf-generator.html">Inline CPF Generator</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-04-12T10:00:00-03:00">
                 Published: qui 12 abril 2018
@@ -38,70 +43,15 @@
         </address>
 <p>In <a href="/category/python.html">Python</a>.</p>
 <p>tags: <a href="/tag/python.html">python</a> <a href="/tag/tips.html">tips</a> </p>
-</footer><!-- /.post-info --><ul>
+</footer><!-- /.post-info -->      <ul>
 <li>Python inline CPF generator</li>
 </ul>
 <div class="highlight"><pre><span></span>python -c <span class="s2">&quot;import random;c=[random.randint(0,9) for x in range(9)];x=sum([(len(c)+1-i)*v for i,v in enumerate(c)])%11;c.append(11-x if x&gt;1 else 0);c.append(11-x if x&gt;1 else 0);print(&#39;%s%s%s.%s%s%s.%s%s%s-%s%s&#39; % tuple(c))&quot;</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</pre></div>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/iterate-files.html" rel="bookmark"
-                           title="Permalink to Iterar listas com itertools">Iterar listas com itertools</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-04-11T10:00:00-03:00">
-                Published: qua 11 abril 2018
-        </abbr>
-		<br />
-        <abbr class="modified" title="2018-04-11T10:00:00-03:00">
-                Updated: qua 11 abril 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/rafael-garcia.html">Rafael Garcia</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/itertools.html">itertools</a> <a href="/tag/tips.html">tips</a> </p>
-</footer><!-- /.post-info -->                <p>itertools</p>
-                <a class="readmore" href="/iterate-files.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/validar-html-com-python.html" rel="bookmark"
-                           title="Permalink to Validar HTML com python">Validar HTML com python</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-04-11T10:00:00-03:00">
-                Published: qua 11 abril 2018
-        </abbr>
-		<br />
-        <abbr class="modified" title="2018-04-11T10:00:00-03:00">
-                Updated: qua 11 abril 2018
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/rafael-garcia.html">Rafael Garcia</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/bs4.html">bs4</a> <a href="/tag/beaultifulsoap.html">beaultifulsoap</a> <a href="/tag/xml.html">xml</a> <a href="/tag/html.html">html</a> <a href="/tag/tips.html">tips</a> </p>
-</footer><!-- /.post-info -->                <p>Validar HTML</p>
-                <a class="readmore" href="/validar-html-com-python.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

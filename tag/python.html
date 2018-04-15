@@ -23,7 +23,39 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/iterate-files.html">Iterar listas com itertools</a></h1>
+                    <h1 class="entry-title"><a href="/inline-cpf-generator.html">Inline CPF Generator</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-04-12T10:00:00-03:00">
+                Published: qui 12 abril 2018
+        </abbr>
+		<br />
+        <abbr class="modified" title="2018-04-12T10:00:00-03:00">
+                Updated: qui 12 abril 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/rafael-garcia.html">Rafael Garcia</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/tips.html">tips</a> </p>
+</footer><!-- /.post-info --><ul>
+<li>Python inline CPF generator</li>
+</ul>
+<div class="highlight"><pre><span></span>python -c <span class="s2">&quot;import random;c=[random.randint(0,9) for x in range(9)];x=sum([(len(c)+1-i)*v for i,v in enumerate(c)])%11;c.append(11-x if x&gt;1 else 0);c.append(11-x if x&gt;1 else 0);print(&#39;%s%s%s.%s%s%s.%s%s%s-%s%s&#39; % tuple(c))&quot;</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/iterate-files.html" rel="bookmark"
+                           title="Permalink to Iterar listas com itertools">Iterar listas com itertools</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-04-11T10:00:00-03:00">
                 Published: qua 11 abril 2018
@@ -38,21 +70,10 @@
         </address>
 <p>In <a href="/category/python.html">Python</a>.</p>
 <p>tags: <a href="/tag/python.html">python</a> <a href="/tag/itertools.html">itertools</a> <a href="/tag/tips.html">tips</a> </p>
-</footer><!-- /.post-info --><ul>
-<li>Iterar itens de varias listas com itertools</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
-
-<span class="k">def</span> <span class="nf">iterate_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">files</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;processa varias listas de arquivos&quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>itertools</p>
+                <a class="readmore" href="/iterate-files.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
