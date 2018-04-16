@@ -41,18 +41,23 @@
 </footer><!-- /.post-info --><ul>
 <li>Python inline CPF generator</li>
 </ul>
-<div class="highlight"><pre><span></span>python -c <span class="s2">&quot;import random;c=[random.randint(0,9) for x in range(9)];x=sum([(10-i)*v for i,v in enumerate(c)])%11;d=11-x if x&gt;1 else 0;c.append(d);c.append(d);print(&#39;%s%s%s.%s%s%s.%s%s%s-%s%s&#39; % tuple(c))&quot;</span>
+<div class="highlight"><pre><span></span>python -c <span class="s2">&quot;import random;c=[random.randint(0,9) for x in range(9)];x=sum([(len(c)+1-i)*v for i,v in enumerate(c)])%11;d=11-x if x&gt;1 else 0;c.append(d);x=sum([(len(c)+1-i)*v for i,v in enumerate(c)])%11;d=11-x if x&gt;1 else 0;c.append(d);print(&#39;%s%s%s.%s%s%s.%s%s%s-%s%s&#39; % tuple(c))&quot;</span>
 </pre></div>
 
 
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
-<span class="n">cpf</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)]</span>
-<span class="n">mod</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">mod</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">mod</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cpf</span><span class="p">)])</span> <span class="o">%</span> <span class="mi">11</span>
-<span class="n">digito</span> <span class="o">=</span> <span class="mi">11</span> <span class="o">-</span> <span class="n">mod</span> <span class="k">if</span> <span class="n">mod</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span><span class="p">;</span>
+<span class="n">cpf</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)];</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([(</span><span class="nb">len</span><span class="p">(</span><span class="n">cpf</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">v</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cpf</span><span class="p">)])</span> <span class="o">%</span> <span class="mi">11</span>
+<span class="n">digito</span> <span class="o">=</span> <span class="mi">11</span> <span class="o">-</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span>
 <span class="n">cpf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">digito</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([(</span><span class="nb">len</span><span class="p">(</span><span class="n">cpf</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">v</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cpf</span><span class="p">)])</span> <span class="o">%</span> <span class="mi">11</span>
+<span class="n">digito</span> <span class="o">=</span> <span class="mi">11</span><span class="o">-</span><span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span>
 <span class="n">cpf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">digito</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s%s%s</span><span class="s1">.</span><span class="si">%s%s%s</span><span class="s1">.</span><span class="si">%s%s%s</span><span class="s1">-</span><span class="si">%s%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">cpf</span><span class="p">))</span>
-</pre></div>                </article>
+</pre></div>
+
+
+<p>Fonte <a href="https://gist.github.com/lucascnr/24c70409908a31ad253f97f9dd4c6b7c">https://gist.github.com/lucascnr/24c70409908a31ad253f97f9dd4c6b7c</a></p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
